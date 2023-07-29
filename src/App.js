@@ -1,7 +1,7 @@
 
 import './App.css';
 
-const list = [
+const stories = [
   {
     title : 'React',
     url : 'https://reactjs.org',
@@ -31,11 +31,15 @@ const getTitle = (title) =>  title
 const Greetings = () =>  <h1> Hello {getTitle('React')}  </h1>
 
 
-const Searchbar = () =>  <input id='search' type='text' on onChange={handleChange}/>
+const Searchbar = () =>  <input 
+  id='search' 
+  type='text' 
+  on onChange={handleChange}
+/>
 
 
-const List = () => {
-  return list.map (item =>{
+const List = props => 
+  props.list.map (item =>{
         return (
         <div key= {item.objectID} > 
         <span>
@@ -48,7 +52,7 @@ const List = () => {
         )
         
       })
-}
+
 
 const App = () => {
   return (
@@ -58,7 +62,7 @@ const App = () => {
       
       <Searchbar />
       <hr/>
-      <List />
+      <List list={stories} />
     </div>
   );
 }
